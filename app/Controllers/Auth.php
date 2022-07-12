@@ -19,8 +19,8 @@ class Auth extends BaseController
     {
         $rules = [
             'user_name' => 'required',
-            'user_email' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[user.user_email]',
-            'user_password' => 'required|min_length[8]|max_length[255]',
+            'user_email' => 'required|valid_email|is_unique[user.user_email]',
+            'user_password' => 'required|min_length[8]',
             'user_type' => 'required'
         ];
 
@@ -36,9 +36,6 @@ class Auth extends BaseController
         $userModel = new UserModel();
        $userModel->save($input);
      
-
-       
-
 return $this
             ->getJWTForUser(
                 $input['user_email'],
