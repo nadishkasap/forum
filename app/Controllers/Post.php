@@ -14,13 +14,13 @@ class Post extends BaseController
      * Get all Posts
      * @return Response
      */
-    public function index($searchText=0)
+    public function index()
     {
         $model = new PostModel();
         return $this->getResponse(
             [
                 'message' => 'Posts retrieved successfully',
-                'posts' => $model->findAll()
+                'posts' => $model->findApprovedPost()
             ]
         );
     }

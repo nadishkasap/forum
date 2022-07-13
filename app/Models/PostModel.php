@@ -18,4 +18,13 @@ class PostModel extends Model{
 
       return $post;
   }
+  public function findApprovedPost()
+  {
+      $post = $this
+          ->asArray()
+          ->where(['post_status' => 1])
+          ->findAll();
+      return $post;
+  }
+
 }
